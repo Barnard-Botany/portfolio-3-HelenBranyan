@@ -37,9 +37,10 @@ It is also possible to download R Packages from GitHub repositories if you have 
 ```{r}
 #install.packages(ape)
 #install.packages("devtools")
+library("devtools")
 #devtools::install_github("ropensci/brranching")
 library("ape")
-#library("brranching")
+library("brranching")
 ```
 
 ##Phylogenies
@@ -149,8 +150,8 @@ newick_str = "(Wheat,(Corn,(Cabbage, Kale)));"
 tr2_plants = read.tree(text=newick_str)
 plot(tr2_plants)
 ```
-# this is a much better tree, seeing as cabbage and kale are a lot closer than corn and cabbage (as depicted in the former tree
-)
+# this is a much better tree, seeing as cabbage and kale are a lot closer than corn and cabbage (as depicted in the former tree)
+
 ## MINI-EXERCISE 2
 
 1. Copy, paste and re-write a chunk of code (or write it fresh): write a new Newick tree as as string variable, read it as a tree, and plot it. Make sure it is consistent with 2018 botanical knowledge about these four taxa. You may need to modify topology.
@@ -158,7 +159,6 @@ plot(tr2_plants)
 2. To these four taxa, add two additional taxa: radish and sequoia. For these six tip taxa, write a new Newick variable, read it, and plot it. Then repeat. Aim to write two alternative trees: one erroneous and one correct. 
 a. Explain what's wrong in your erroneous tree and how you've corrected the error in the other tree. .
 b. Use commands such as "str" or "attribute" and comment about whether your erroneous and correct tree differ in tips, Nnodes, or edges. 
-
 
 
 
@@ -178,7 +178,7 @@ tr3_plants = read.tree(text=newick_str)
 plot(tr3_plants)
 ```
 
-#here is the correct phylogeny 
+#here is the correct phylogeny (I did my best)
 ```{r}
 newick_str = "(((Cabbage, Radish, Kale), Wheat, Corn) Seqouia);"
 trcorrect_plants = read.tree(text=newick_str)
@@ -197,7 +197,7 @@ plot(tr_primate)
 ```
 
 What was added to the tree and the plot of the tree?
-# the branches are longer (more accurate representation of time?)
+# the branches are longer/shorter (to create a representation of time)
 
 ```{r}
 newick_str = "(((Humans:6.0, Chimps:6.0)LCA_humans_chimps:1.0, Gorillas:7.0)LCA_w_gorillas:1.0, Orangs:8.0)LCA_w_orangs:1.0;"
@@ -301,7 +301,7 @@ plot(trcorrect_plants, type="fan")
 plot(trcorrect_plants, type="unrooted")
 plot(trcorrect_plants, type="radial")
 ```
-
+#here are four types of the correct phylogeny (again, not sure why sequiao didn't plot)-> also not sure why the trees are cut off a little 
 
 ### SAVING FILES: important for reproducing trees later
 
@@ -606,7 +606,7 @@ Your list/file can then be used to obtain a phylogenetic tree using the code lea
 
 Plot your tree in one or more formats (e.g., fan, phylogeny, cladogram). Save that in pdf format. 
 
-YOu were able to make those plots because phylomatic generated Newick trees, which you you need to save, too. Use  *.txt format. 
+You were able to make those plots because phylomatic generated Newick trees, which you you need to save, too. Use  *.txt format. 
 
 You can then use those output files to begin the part of the Portfolio that uses Interactive Tree of Life. 
 
