@@ -87,22 +87,36 @@ What is the difference between regular plot and the command below, if any?
 As an alternative to using the R Studio window at top right, instead write and submit a few commands such as
 
 tr_primates
+# we are creating a phylogenetic tree with 5 tips and 4 internal nodes, tips labels "humans" "chimps" "gorillas" "orangs" "lemur" (i added that one in on accident haha)
 
 str("tr_primates")
+#rooted no branch lengths 
 
 and
 
 str(tr_primates)
-
+#List of 3
+ $ edge     : int [1:8, 1:2] 6 7 8 8 7 6 1 1 7 8 ...
+ $ Nnode    : int 4
+ $ tip.label: chr [1:5] "Humans" "Chimps" "Gorillas" "Orangs" ...
+ - attr(*, "class")= chr "phylo"
+ - attr(*, "order")= chr "cladewise"
 attributes(tr_primates)
 
 names(tr_primates) 
+#"edge" "Nnode" "tip.label"-> the names of the different parts of the tree
 
 Generate output, and then write brief notes about the information you are given by submitting these commands.  
 
 There are many trees that can be drawn to show relationships of four taxa. Some have the same topology and simply re-arrange the placement of taxa on the tips. Others differ in the topology that connects tips to internal nodes. Among the many possibilities, many are inconsistent or non-parsimonious with respect to  available data used for inferring phylogenies. Typically fewer will be consistent and parsimoneous, sometimes one will be uniquely best to fit the data. 
 
 To finish up Mini-Exercise 1, write new code with a new Newick string variable, read the string using read.tree, and plot it. The goal is to generate a four-taxon tree with a new topology. It will be an erroneous tree, depicting relationships that contradict today's biological knowledge. That's okay; this is just an exercise.
+```{r}
+newick_str = "(((Burgers, Fries), Pizza), Soda);"
+tr_food = read.tree(text=newick_str)
+plot(tr_food)
+```
+#not sure if we were supposed to use plants, but I used food 'cause I was feeling peckish 
 
 #### Overall message about phylogenies
 Phylogenies have tips, nodes and edges. Nodes are ancestors to tips. Tips and edges are connected by nodes. Also, reecent or derived nodes can  connect to older or ancestral nodesThe details of how tips and nodes connect (via edges) is dictate by the newick code. 
@@ -135,7 +149,8 @@ newick_str = "(Wheat,(Corn,(Cabbage, Kale)));"
 tr2_plants = read.tree(text=newick_str)
 plot(tr2_plants)
 ```
-
+# this is a much better tree, seeing as cabbage and kale are a lot closer than corn and cabbage (as depicted in the former tree
+)
 ## MINI-EXERCISE 2
 
 1. Copy, paste and re-write a chunk of code (or write it fresh): write a new Newick tree as as string variable, read it as a tree, and plot it. Make sure it is consistent with 2018 botanical knowledge about these four taxa. You may need to modify topology.
@@ -143,6 +158,33 @@ plot(tr2_plants)
 2. To these four taxa, add two additional taxa: radish and sequoia. For these six tip taxa, write a new Newick variable, read it, and plot it. Then repeat. Aim to write two alternative trees: one erroneous and one correct. 
 a. Explain what's wrong in your erroneous tree and how you've corrected the error in the other tree. .
 b. Use commands such as "str" or "attribute" and comment about whether your erroneous and correct tree differ in tips, Nnodes, or edges. 
+
+
+
+
+#here is the correct phylogeny 
+
+```{r}
+newick_str = "(Wheat,(Corn,(Cabbage, Kale)));"
+tr2_plants = read.tree(text=newick_str)
+plot(tr2_plants)
+```
+
+#here is the fake tree I created 
+
+```{r}
+newick_str = "(Sequoia,(Wheat,(Corn,(Cabbage, Kale, Radish))));"
+tr3_plants = read.tree(text=newick_str)
+plot(tr3_plants)
+```
+
+#here is the correct phylogeny 
+```{r}
+newick_str = "(((Cabbage, Radish, Kale), Wheat, Corn) Seqouia);"
+trcorrect_plants = read.tree(text=newick_str)
+plot(trcorrect_plants)
+```
+#I did my best, but I am not sure why Sequoia didn't plot 
 
 ## Branching order and branching lengths
 
@@ -155,6 +197,7 @@ plot(tr_primate)
 ```
 
 What was added to the tree and the plot of the tree?
+# the branches are longer (more accurate representation of time?)
 
 ```{r}
 newick_str = "(((Humans:6.0, Chimps:6.0)LCA_humans_chimps:1.0, Gorillas:7.0)LCA_w_gorillas:1.0, Orangs:8.0)LCA_w_orangs:1.0;"
@@ -248,6 +291,17 @@ layout(matrix(1, 1))
 ### MINI EXERCISE 4
 
 Practice a few of these data display techniques using the six-taxon phylogeny that includes cabbage, kale, corn and wheat, plus radish and sequoia.
+
+#4 types 
+
+```{r}
+layout(matrix(1:4, 2, 2))
+plot(trcorrect_plants, type="cladogram")
+plot(trcorrect_plants, type="fan")
+plot(trcorrect_plants, type="unrooted")
+plot(trcorrect_plants, type="radial")
+```
+
 
 ### SAVING FILES: important for reproducing trees later
 
