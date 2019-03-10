@@ -480,7 +480,7 @@ Here is another example of a tree with variable branch lengths.
 ```{r}
 spp1 <- c("Abies_nordmanniana", "Abies_bornmuelleriana", "Abies_cilicica", "Abies_cephalonica",
 "Abies_numidica", "Abies_pinsapo", "Abies_alba", "Ginkgo biloba", "Nymphaea lotus", "Illicium mexicanum", "Magnolia fraseri","Lindera pulcherrima")
-tree_phylomatic <- phylomatic(taxa = taxa, storedtree ="zanne2014", get = 'POST')
+tree_phylomatic <- phylomatic(taxa = spp1, storedtree ="zanne2014", get = 'POST')
 plot(tree_phylomatic, no.margin = TRUE)
 ```
 
@@ -588,10 +588,29 @@ Do and write up notes about two things:
 
 1. Try generating these trees again, but change from cladogram to phylogram, or to another format for the tree. 
 
+#four types of trees for the imported list: 
+```{r}
+layout(matrix(1:4, 2, 2))
+plot(tree_phylomatic_EG2, type="cladogram")
+plot(tree_phylomatic_EG2, type="fan")
+plot(tree_phylomatic_EG2, type="unrooted")
+plot(tree_phylomatic_EG2, type="radial")
+```
+
 2. Then, looking at all your output, what differs most noticably between the pair of trees, and how/why does this relate to the storedtree used to generate them? Try to explain what this means in your own words. 
 
-3. Lastly, look at the output and you'll see that many taxa were excluded. Try looking them up in EOL or Wikipedia. Why was it difficult to include them? What does this say about the history of botany? Are there some things that were excluded that should not have been excluded.  
+#A few diferent versions of the stored tree:  
+```{r}
+layout(matrix(1:4, 2, 2))
+plot(tree_phylomatic, type="cladogram")
+plot(tree_phylomatic, type="fan")
+plot(tree_phylomatic, type="unrooted")
+plot(tree_phylomatic, type="radial")
+```
+#Really confused on what the question is asking. I see very little difference between the generated trees and the stored tree, other than layout of course. 
 
+3. Lastly, look at the output and you'll see that many taxa were excluded. Try looking them up in EOL or Wikipedia. Why was it difficult to include them? What does this say about the history of botany? Are there some things that were excluded that should not have been excluded.  
+#For the imported list, a few of those taxa missing are from other kingdoms (algae, fungus, etc.). Botany has changed to not include those taxa within the greater plant phylogeny-> they have their own phylogeny. Some are mosses, ferns, etc., that may be more distantly related. However I am not sure why some, like pinus, are not included? 
 
 # FINISHING UP - MICRO-EXERCISES AND A MACRO-EXERCISE
 
