@@ -633,5 +633,112 @@ Lastly, be sure to save your R Notebook with appropriate output and commentary.
 
 When your finished with this part of Portfolio 3, you can and should push the notebook and associated exported files back to the appropriate GitHub Repository for Digital Lab 3.  
 
+#here is a phylogeny from my Mannahatta list :) 
+```{r}
+EG3<-c("Acer",
+"Carpinus",
+"Eurybia",
+"Prunus",
+"Rubus",
+"Smilax",
+"Viburnum",
+"Viola",
+"Acalypha",
+"Castanea",
+"Quercus",
+"Rhus",
+"Anemone",
+"Arabis",
+"Bidens",
+"Carya",
+"Celastrus",
+"Chelone",
+"Cyperus",
+"Festuca",
+"Hamamelis",
+"Geranium",
+"Geum",
+"Acorus",
+"Erigeron",
+"Dryopteris",
+"Athyrium")
+EG3
+tree_phylomatic_EG4 <- phylomatic(taxa = EG3, get = 'POST')
+plot(tree_phylomatic_EG4, no.margin = TRUE, type="cladogram")
+newick_fn5 = "tree_phylomatic_EG4"
+write.tree(tree_phylomatic_EG4, file=newick_fn5)
+#repeating to get tree from Zanne2014
+tree_phylomatic_EG5 <- phylomatic(taxa = EG3, storedtree ="zanne2014", get = 'POST')
+plot(tree_phylomatic_EG5, no.margin = TRUE, type="cladogram")
+newick_fn6 = "tree_phylomatic_EG5"
+write.tree(tree_phylomatic_EG5, file=newick_fn6)
+```
+#comparison of the different types
+```{r}
+layout(matrix(1:4, 2, 2))
+plot(tree_phylomatic_EG5, type="cladogram")
+plot(tree_phylomatic_EG5, type="fan")
+plot(tree_phylomatic_EG5, type="unrooted")
+plot(tree_phylomatic_EG5, type="radial")
+```
+```{r}
+newick_fn6 = "tree_phylomatic_EG5"
+write.tree(tree_phylomatic_EG5, file=tree_phylomatic_EG5)
+```
 
+```{r}
+pdf_fn = "tree_phylomatic_EG5.pdf"
+pdf(file=pdf_fn)
+plot(tree_phylomatic_EG5, type="unrooted", edge.width=5, edge.color="blue", lab4ut="axial")
+dev.off()
+```
+
+#here is the phylogeny for my Plant-O-Matic list: 
+```{r}
+EG4<-c("Acer",
+"Acorus",
+"Adiantum",
+"Agrostis",
+"Ailanthus",
+"Betula",
+"Bidens",
+"Bromus",
+"Bryum",
+"Caltha",
+"Glaucium",
+"Juncus",
+"Larix",
+"Najas",
+"Passiflora",
+"Pinus",
+"Poa",
+"Populus",
+"Salix",
+"Sanionia",
+"Viola",
+"Verbana",
+"Selaginella",
+"Leersia",
+"Dicranum",
+"Diervilla",
+"Zygodon")
+EG4
+tree_phylomatic_EG6 <- phylomatic(taxa = EG4, get = 'POST')
+plot(tree_phylomatic_EG6, no.margin = TRUE, type="cladogram")
+newick_fn7 = "tree_phylomatic_EG6"
+write.tree(tree_phylomatic_EG6, file=newick_fn7)
+#repeating to get tree from Zanne2014
+tree_phylomatic_EG7 <- phylomatic(taxa = EG4, storedtree ="zanne2014", get = 'POST')
+plot(tree_phylomatic_EG7, no.margin = TRUE, type="cladogram")
+newick_fn8 = "tree_phylomatic_EG7"
+write.tree(tree_phylomatic_EG7, file=newick_fn8)
+```
+#comparison of the different types
+```{r}
+layout(matrix(1:4, 2, 2))
+plot(tree_phylomatic_EG7, type="cladogram")
+plot(tree_phylomatic_EG7, type="fan")
+plot(tree_phylomatic_EG7, type="unrooted")
+plot(tree_phylomatic_EG7, type="radial")
+```
 
