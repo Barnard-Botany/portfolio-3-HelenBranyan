@@ -75,7 +75,7 @@ write.tree(tree_zanne2014, file=default_fn)
 
 ```
 How do these two trees compare? Do they show the same relationships among taxa and clades? Is something else different? (Hint: compare lengths of branches within and between trees.)
-
+#There are defifinetly differences in the relationships, with the most obvious possibly being amorphophallus's relationship to saccharum, aechmea, and neomarica. The length of the branches are much longer between the common ancestor and all taxa in R20120829. Also, distance between the individual taxa differ by tree. 
 
 ## Open Tree of Life and the ROTL Package
 
@@ -106,7 +106,7 @@ https://ropensci.org/
 
 rotl provides an interface to the Open Tree of Life (OTL) API and allows users to query the API, retrieve parts of the Tree of Life and integrate these parts with other R packages.
 
-The OTL API provides services to access to the Tree of Life, which uses a system for naming and identifying taxa called OTT (for Open Tree Taxonomy). If you have names of species (or general, or families) then you can query for the OTT directly using features of ROTL, as below.
+The OTL API provides services to access to the Tree of Life, which uses a system for naming and identifying taxa called OTT (for Open Tree Taxonomy). If you have names of species (or genera/families) then you can query for the OTT directly using features of ROTL, as below.
 
 + the Tree of Life a.k.a. TOL (the synthetic tree): a single draft tree that is a combination of the OTL taxonomy and the source trees (studies) . . . these features begin with the prefix tol_
 
@@ -218,7 +218,7 @@ It is possible to get trees for entire taxonomic groups as they exist inside of 
 ```{r}
 #For the family Illiciaceae
 illicium_id <- tnrs_match_names("Illiciaceae")
-illicium_tree <- tol_subtree(ott_id = ott_id(illicium_id))
+illicium_tree <- tol_subtree(ott_id(illicium_id))
 plot(illicium_tree, type = "fan")
 ```
 
@@ -319,13 +319,19 @@ write.tree(tr2_plants, file=newick_fn)
 
 + Modify the code that generated the four-taxon animal phylogeny, putting it into the blank chunk of code below. Then run the code to obtain the output (a phylogeny from Open Tree of Life).
 
-
 ```{r}
-
+library(rotl)
+taxa <- c("Abies", "Ailanthus", "Begonia", "Berberis", "Betula", "Chenopodium", "Clematis", "Dahlia", "Dracaena", "Equisetum", "Euonymus", "Euphorbia", "Fagus")
+resolved_names <- tnrs_match_names(taxa)
+resolved_names
 ```
 
 2. You've developed your own lists of plants to resolve and phylogenize. Use it to Get a phylogeny from OTT.
+```{r}
+my_tree <- tol_induced_subtree(ott_ids = resolved_names$ott_id)
+plot(my_tree, no.margin=TRUE)
 
+```
 
 #### More Information - the ROTL Vignette and FAQ
 
