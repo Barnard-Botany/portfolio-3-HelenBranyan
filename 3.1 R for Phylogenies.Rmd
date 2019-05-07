@@ -117,7 +117,7 @@ newick_str = "(((Burgers, Fries), Pizza), Soda);"
 tr_food = read.tree(text=newick_str)
 plot(tr_food)
 ```
-#not sure if we were supposed to use plants, but I used food 'cause I was feeling peckish 
+#not sure if we were supposed to use plants, but I used food 'cause I was feeling peckish
 
 #### Overall message about phylogenies
 Phylogenies have tips, nodes and edges. Nodes are ancestors to tips. Tips and edges are connected by nodes. Also, reecent or derived nodes can  connect to older or ancestral nodesThe details of how tips and nodes connect (via edges) is dictate by the newick code. 
@@ -184,7 +184,9 @@ newick_str = "(((Cabbage, Radish, Kale), Wheat, Corn) Seqouia);"
 trcorrect_plants = read.tree(text=newick_str)
 plot(trcorrect_plants)
 ```
-#I did my best, but I am not sure why Sequoia didn't plot 
+#I did my best, but I am not sure why Sequoia didn't plot
+
+# Yeah, that's weird. Oh well.
 
 ## Branching order and branching lengths
 
@@ -213,6 +215,13 @@ In November 2017, scientists discovered that there are two Orang species, the kn
 
 ```{r}
 newick_str = "(((Humans:12.5, Chimps:12.5):1.0, Gorillas:14.0):1.0, Orangs:14.5):1.0;"
+tr_primate = read.tree(text=newick_str)
+plot(tr_primate)
+```
+
+# You should've had something like this:
+```{r}
+newick_str = "(((Humans:12.5, Chimps:12.5):1.0, Gorillas:14.0):1.0, (Orang_ abelii:14.5, Orang_tapanuliensis:14.5):3.5);"
 tr_primate = read.tree(text=newick_str)
 plot(tr_primate)
 ```
@@ -683,7 +692,7 @@ plot(tree_phylomatic_EG5, type="radial")
 ```
 ```{r}
 newick_fn6 = "tree_phylomatic_EG5"
-write.tree(tree_phylomatic_EG5, file=tree_phylomatic_EG5)
+write.tree(tree_phylomatic_EG5, file=newick_fn6)
 ```
 
 ```{r}
@@ -741,4 +750,12 @@ plot(tree_phylomatic_EG7, type="fan")
 plot(tree_phylomatic_EG7, type="unrooted")
 plot(tree_phylomatic_EG7, type="radial")
 ```
+
+# Wonderful job on the food phylogeny:
+```{r}
+newick_str = "(((Burgers, Fries), Pizza), Soda);"
+tr_food = read.tree(text=newick_str)
+plot(tr_food)
+```
+# LOL
 
